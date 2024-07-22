@@ -1,3 +1,4 @@
+//This is new code
 import GeoJSON from 'ol/format/GeoJSON.js';
 import Map from 'ol/Map.js';
 import VectorLayer from 'ol/layer/Vector.js';
@@ -8,7 +9,7 @@ import OSM from 'ol/source/OSM';
 import './style.css'
 const vectorLayer = new VectorLayer({
   source: new VectorSource({
-    url: 'https://geoserver.ctu.edu.vn/geoserver/ctu/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ctu%3Arooms&maxFeatures=50&outputFormat=application%2Fjson',
+    url: 'https://geoserver.ctu.edu.vn/geoserver/ctu/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ctu%3Aroom_by_floor&maxFeatures=50&outputFormat=application%2Fjson',
     format: new GeoJSON(),
   }),
   style: {
@@ -74,13 +75,13 @@ const displayFeatureInfo = function (pixel) {
   }
 };
 
-map.on('pointermove', function (evt) {
-  if (evt.dragging) {
-    return;
-  }
-  const pixel = map.getEventPixel(evt.originalEvent);
-  displayFeatureInfo(pixel);
-});
+// map.on('pointermove', function (evt) {
+//   if (evt.dragging) {
+//     return;
+//   }
+//   const pixel = map.getEventPixel(evt.originalEvent);
+//   displayFeatureInfo(pixel);
+// });
 
 map.on('click', function (evt) {
   displayFeatureInfo(evt.pixel);
